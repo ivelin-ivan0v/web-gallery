@@ -15,8 +15,5 @@
     catch(mysqli_sql_exception){
         echo "Error connecting to the database! <br>";
     }
- 
-    // $sql = "INSERT INTO users (email, password, first_name, last_name) VALUES ('$email', '$hash', 'Ivan', 'Ivanov')";
-    //             mysqli_query($conn, $sql);
 
 ?>
