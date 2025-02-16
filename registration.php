@@ -28,7 +28,8 @@ session_start();
         <input type="text" name="first_name"><br>
         <label>Last Name:</label><br>
         <input type="text" name="last_name"><br>
-        <input class="submitButton" type="submit" name="submit" value="Register">
+        <input class="submitButton" type="submit" name="submit" value="Register"><br>
+        <a class="register-link" href="index.php">Already have an account? Login here!</a>
     </form>
     <br>
 
@@ -50,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } elseif (empty($password)) {
             echo "<span style='color: red;'>Please enter a valid password!<span/>";
         } elseif (empty($firstName)) {
-            echo "<span style='color: red;'>Please enter a valid first!<span/>";
+            echo "<span style='color: red;'>Please enter a valid first name!<span/>";
         } elseif (empty($lastName)) {
             echo "<span style='color: red;'>Please enter a valid last name!<span/>";
         } else {

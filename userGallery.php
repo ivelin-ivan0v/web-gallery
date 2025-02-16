@@ -10,6 +10,10 @@ $result = mysqli_query(
 );
 $resultNew = mysqli_fetch_assoc($result);
 
+if (empty($resultNew)) {
+    $resultNew = ["first_name" => "User", "last_name" => ""];
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["submitImage"])) {
         $imageUrl = mysqli_real_escape_string($conn, $_POST["imageUrl"]);
@@ -65,7 +69,12 @@ $galleryResult = mysqli_query($conn, "SELECT * FROM images WHERE user_id='$thisI
         <?php
         while ($image = mysqli_fetch_assoc($galleryResult)) {
             if (!empty($image['url'])) {
-                echo "<img src='{$image['url']}' alt='Gallery Image'>";
+                // echo "<img src='{$image['url']}' alt='Gallery Image'>";
+                $encodedUrl = urlencode($image['url']);
+                //echo "<a href='viewImage.php'><img src='{$image['url']}' alt='Gallery Image' /></a>";
+                echo "<a href='viewImage.php?url=$encodedUrl'>
+                    <img src='{$image['url']}' alt='Gallery Image' />
+                  </a>";
             }
         }
         ?>

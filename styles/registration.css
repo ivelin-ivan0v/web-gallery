@@ -66,3 +66,16 @@ input {
 .submitButton:hover {
   background-color: #0056b3;
 }
+
+.register-link {
+  cursor: pointer;
+  text-decoration: underline;
+  text-align: center;
+  margin-top: 12px;
+  color: #333;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+  color: #007bff;
+}
