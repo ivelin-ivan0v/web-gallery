@@ -10,29 +10,29 @@ if(isset($_SESSION["id"])){
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Gallery</title>
-    <link rel="stylesheet" href="styles/index.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Web Gallery</title>
+        <link rel="stylesheet" href="styles/index.css">
+    </head>
 
-<body>
-    <header>
-        <h1>WebGallery</h1>
-    </header>
+    <body>
+        <header>
+            <h1>WebGallery</h1>
+        </header>
 
-    <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
-        <h2>User Login</h2>
-        <label>Email:</label><br>
-        <input type="email" name="email"><br>
-        <label>Password:</label><br>
-        <input type="password" name="password"><br>
-        <input class="submitButton" type="submit" name="submit" value="log in"><br>
-        <a class="register-link" href="registration.php">Don't have an account? Register here!</a>
-    </form>
-    <br>
-</body>
+        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
+            <h2>User Login</h2>
+            <label>Email:</label><br>
+            <input type="email" name="email"><br>
+            <label>Password:</label><br>
+            <input type="password" name="password"><br>
+            <input class="submitButton" type="submit" name="submit" value="log in"><br>
+            <a class="register-link" href="registration.php">Don't have an account? Register here!</a>
+        </form>
+        <br>
+    </body>
 
 </html>
 

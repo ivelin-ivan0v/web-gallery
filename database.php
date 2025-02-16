@@ -3,7 +3,7 @@
     $db_user = "root";
     $db_pass = "";
     $db_name = "webgallery_db";
-    $conn = "";
+    //$conn = "";
 
     try{
         $conn = mysqli_connect(
@@ -15,5 +15,4 @@
     catch(mysqli_sql_exception){
         echo "Error connecting to the database! <br>";
     }
-
 ?>

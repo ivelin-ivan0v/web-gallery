@@ -43,29 +43,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['deleteImage'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Image</title>
-    <link rel="stylesheet" href="styles/userGallery.css">
-</head>
-<body>
-    <header>
-        <h1>WebGallery</h1>
-        <h3><?php echo "{$resultNew["first_name"]} {$resultNew["last_name"]}'s gallery"; ?></h3>
-        <a href="logout.php">
-            <button>Log Out</button>
-        </a>
-    </header>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>View Image</title>
+        <link rel="stylesheet" href="styles/userGallery.css">
+    </head>
+    <body>
+        <header>
+            <h1>WebGallery</h1>
+            <h3><?php echo "{$resultNew["first_name"]} {$resultNew["last_name"]}'s gallery"; ?></h3>
+            <a href="logout.php">
+                <button>Log Out</button>
+            </a>
+        </header>
 
-    <div class="image-viewer">
-        <img src="<?php echo htmlspecialchars($image['url']); ?>" alt="Selected Image">
-        <p><strong>Uploaded on:</strong> <?php echo date("F j, Y, g:i a", strtotime($uploadDate)); ?></p>
-        
-        <form method="post">
-            <button type="submit" name="deleteImage">Delete Image</button>
-        </form>
-        <a href="userGallery.php"><button>Go Back to Gallery</button></a>
-    </div>
-</body>
+        <div class="image-viewer">
+            <img src="<?php echo htmlspecialchars($image['url']); ?>" alt="Selected Image">
+            <p><strong>Uploaded on:</strong> <?php echo date("F j, Y, g:i a", strtotime($uploadDate)); ?></p>
+            
+            <form method="post">
+                <button type="submit" name="deleteImage">Delete Image</button>
+            </form>
+            <a href="userGallery.php"><button>Go Back to Gallery</button></a>
+        </div>
+    </body>
 </html>

@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $imageUrl = mysqli_real_escape_string($conn, $_POST["imageUrl"]);
         $imageUrl = filter_input(INPUT_POST, "imageUrl", FILTER_VALIDATE_URL);
 
-        if ($imageUrl) {
+        if ($imageUrl && getimagesize($imageUrl)) {
             $check = mysqli_fetch_assoc(mysqli_query(
                 $conn,
                 "SELECT * FROM images WHERE user_id ='$thisId' AND url='$imageUrl'"
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 mysqli_query($conn, "INSERT INTO images (url, user_id) VALUES ('$imageUrl', '$thisId')");
             }
         } else {
-            $errorMessage =  "Invalid URL!";
+            $errorMessage =  "Invalid image URL!";
         }
     }
 }
@@ -40,46 +40,44 @@ $galleryResult = mysqli_query($conn, "SELECT * FROM images WHERE user_id='$thisI
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/userGallery.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="styles/userGallery.css">
+    </head>
 
-<body>
-    <header>
-        <h1>WebGallery</h1>
-        <?php
-        echo "<h3>{$resultNew["first_name"]} {$resultNew["last_name"]}'s gallery</h3>"
-        ?>
-        <a href="logout.php">
-            <button>Log Out</button>
-        </a>
-    </header>
-    <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
-        <label for="imageUrl">Image URL:</label>
-        <input type="text" name="imageUrl" id="imageUrl">
+    <body>
+        <header>
+            <h1>WebGallery</h1>
+            <?php
+            echo "<h3>{$resultNew["first_name"]} {$resultNew["last_name"]}'s gallery</h3>"
+            ?>
+            <a href="logout.php">
+                <button>Log Out</button>
+            </a>
+        </header>
+        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+            <label for="imageUrl">Image URL:</label>
+            <input type="text" name="imageUrl" id="imageUrl">
 
-        <input type="submit" name="submitImage" value="Submit Image">
-        <span style="color: red; margin: 15px; margin-top: 25px;"><?php echo $errorMessage; $errorMessage = ""?></span>
-    </form>
+            <input type="submit" name="submitImage" value="Submit Image">
+            <span style="color: red; margin: 15px; margin-top: 25px;"><?php echo $errorMessage; $errorMessage = ""?></span>
+        </form>
 
-    <div class="gallery">
-        <?php
-        while ($image = mysqli_fetch_assoc($galleryResult)) {
-            if (!empty($image['url'])) {
-                // echo "<img src='{$image['url']}' alt='Gallery Image'>";
-                $encodedUrl = urlencode($image['url']);
-                //echo "<a href='viewImage.php'><img src='{$image['url']}' alt='Gallery Image' /></a>";
-                echo "<a href='viewImage.php?url=$encodedUrl'>
-                    <img src='{$image['url']}' alt='Gallery Image' />
-                  </a>";
+        <div class="gallery">
+            <?php
+            while ($image = mysqli_fetch_assoc($galleryResult)) {
+                if (!empty($image['url'])) {
+                    $encodedUrl = urlencode($image['url']);
+                    echo "<a href='viewImage.php?url=$encodedUrl'>
+                        <img src='{$image['url']}' alt='Gallery Image' />
+                    </a>";
+                }
             }
-        }
-        ?>
-    </div>
+            ?>
+        </div>
 
-</body>
+    </body>
 
 </html>

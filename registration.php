@@ -6,35 +6,35 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Gallery</title>
-    <link rel="stylesheet" href="styles/registration.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Web Gallery</title>
+        <link rel="stylesheet" href="styles/registration.css">
+    </head>
 
-<body>
-    <header>
-        <h1>WebGallery</h1>
-    </header>
+    <body>
+        <header>
+            <h1>WebGallery</h1>
+        </header>
 
-    <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
-        <h2>Create new account</h2>
-        <label>Email:</label><br>
-        <input type="email" name="email"><br>
-        <label>Password:</label><br>
-        <input type="password" name="password"><br>
-        <label>First Name:</label><br>
-        <input type="text" name="first_name"><br>
-        <label>Last Name:</label><br>
-        <input type="text" name="last_name"><br>
-        <input class="submitButton" type="submit" name="submit" value="Register"><br>
-        <a class="register-link" href="index.php">Already have an account? Login here!</a>
-    </form>
-    <br>
+        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
+            <h2>Create new account</h2>
+            <label>Email:</label><br>
+            <input type="email" name="email"><br>
+            <label>Password:</label><br>
+            <input type="password" name="password"><br>
+            <label>First Name:</label><br>
+            <input type="text" name="first_name"><br>
+            <label>Last Name:</label><br>
+            <input type="text" name="last_name"><br>
+            <input class="submitButton" type="submit" name="submit" value="Register"><br>
+            <a class="register-link" href="index.php">Already have an account? Login here!</a>
+        </form>
+        <br>
 
 
-</body>
+    </body>
 
 </html>
 
